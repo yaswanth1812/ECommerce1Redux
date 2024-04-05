@@ -1,0 +1,20 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box
+}
+/* App.css */
+.container {
+  max-width: 1000px; /* Adjust the maximum width as needed */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Add additional styles for responsive design if needed */
+
+/* Slider.css (or any other component-specific CSS file) */
+.slider-container {
+  width: 100%; /* Ensure the slider container spans the full width */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Adjust other styles for the slider content as needed */
