@@ -24,7 +24,7 @@ const Navbar = ()=> {
     
         <div className="bg-black p-2 w-full flex justify-center items-center">
             <p className='text-white font-inter text-2xl font-bold '>
-              Redux Toolkit Time
+               Online Shopping
               </p>
             </div>
 
@@ -32,11 +32,6 @@ const Navbar = ()=> {
 <div>
     <img className='h-16 w-full' src={logo} alt="store"></img>
 </div>
-
-<button className=' font-inter text-base font-medium tracking-normal leading-none text-center'>
-  Logout
-  </button>
-
 <div className='flex flex-row items-center'>
   <div className='flex flex-row items-center'>
 <svg

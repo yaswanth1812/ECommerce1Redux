@@ -9,7 +9,7 @@ const Slider=()=>{
   const Dispatch =useDispatch();
 
   return (
-    <div className='relative pb-4'>
+    <div className='relative pb-3'>
       <div>
         {sliderData.map((item)=>{
           return ( <div 
@@ -17,12 +17,12 @@ const Slider=()=>{
            className={
             parseInt(item.id)=== slideIndex
              ? 
-            "opacity-100 duration-700 ease-in-out scale-100" 
-            :  "opacity-0 duration-700 ease-in-out scale-95"
+            "opacity-100 duration-600 ease-in-out scale-100" 
+            :  "opacity-0 duration-600 ease-in-out scale-100"
           }>
             <div>
               {parseInt(item.id)=== slideIndex && (
-              <img className="h-[530px] w-full" src={item.img} alt="shoes"></img>
+              <img className="h-[525px] w-full" src={item.img} alt="shoes"></img>
               )}
             </div>
             <div className='absolute top-44 mx-auto inset-x-1/4'>
