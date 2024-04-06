@@ -15,14 +15,23 @@ import { addToCart } from '../../features/slices/cartSlice'
 
 
 
-const ProductsectionItem = ({id, img, name, text, size, price, color, totalPrice}) => {
+const ProductSectionItem = ({
+  id, 
+  img, 
+  name, 
+  text, 
+  size,
+   price, 
+   color, 
+   totalPrice,
+  }) => {
     const dispatch =useDispatch();
 
     const defaultSize = size[0];
     const defaultColor = color[0];
   return (
     <div>
-      <Card className="mt-6 w-96">
+      <Card className=" w-96 relative">
         <Typography 
         variant='h4'
         className='mb-2 absolute -rotate-45 top-12 right-8 z-10 text-red-700'>
@@ -41,14 +50,21 @@ const ProductsectionItem = ({id, img, name, text, size, price, color, totalPrice
         </Typography>
         <div className='flex justify-between items-center pt-4'>
         <Typography color='blue' className='font-medium' textGradient>
-          Size left:{defaultSize}
+          Size left:{""}
+          <span className='text-gray-400 text-base font-extralight'>
+            {defaultSize}
+          </span>
         </Typography>
         <Typography color='gray' className='font-medium' textGradient>
-          Color: {" "}<span className='px-2 rounded-full ml-2' style={{backgroundColor:defaultColor}}></span>
+          Color: {" "}
+          <span 
+          className='px-2 rounded-full ml-2'
+           style={{backgroundColor:defaultColor}}>
+           </span>
         </Typography>
         </div>
       </CardBody>
-      <CardFooter className="pt-0">
+      <CardFooter className="flex justify-center gap-7 pt-2">
         <Tooltip content ="Add to Cart" placement="bottom">
             <Button onClick={()=> dispatch
                 (addToCart({
@@ -61,8 +77,13 @@ const ProductsectionItem = ({id, img, name, text, size, price, color, totalPrice
                     name:name,
                     size:defaultSize,
                     color: defaultColor,
-                }))} 
-                size="lg" color="gray" variant="outlined" ripple={true}>
+                })
+              )
+            } 
+                size="lg"
+                 color="gray" 
+                 variant="outlined" 
+                 ripple={true}>
                 Add to Cart
             </Button>
         </Tooltip>
@@ -72,4 +93,4 @@ const ProductsectionItem = ({id, img, name, text, size, price, color, totalPrice
   )
 }
 
-export default ProductsectionItem
+export default ProductSectionItem;

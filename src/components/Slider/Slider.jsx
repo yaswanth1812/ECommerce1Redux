@@ -6,14 +6,13 @@ import sliderData from "../../assests/data/dummyData"
 
 const Slider=()=>{
   const slideIndex =useSelector((state)=>state.slider.value);
-  console.log("slideindex",slideIndex)
   const Dispatch =useDispatch();
 
   return (
     <div className='relative pb-4'>
       <div>
         {sliderData.map((item)=>{
-          return <div 
+          return ( <div 
           key={item.id}
            className={
             parseInt(item.id)=== slideIndex
@@ -23,7 +22,7 @@ const Slider=()=>{
           }>
             <div>
               {parseInt(item.id)=== slideIndex && (
-              <img className="h-[550px] w-full" src={item.img} alt="shoes"></img>
+              <img className="h-[530px] w-full" src={item.img} alt="shoes"></img>
               )}
             </div>
             <div className='absolute top-44 mx-auto inset-x-1/4'>
@@ -31,10 +30,11 @@ const Slider=()=>{
               {parseInt(item.id)=== slideIndex && item.text}</p>
               </div>
           </div>
+          );
         })}
       </div>
       <div className='flex absolute bottom-12 lefty-[45%]'>
-{sliderData.map((item,index)=>{
+{sliderData.map((dot,index)=>{
   return(
     <div className='mr-4'  key={index} > 
     <div 
@@ -51,15 +51,36 @@ const Slider=()=>{
 })}
       </div>
       <div>
-      <button className='absolute top-[50%] right-4 bg-white rounded-full p-2 hover:bg-green-300' onClick={()=> Dispatch(nextSlide(slideIndex+1))}>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+      <button 
+      className='absolute top-[50%] right-4 bg-white rounded-full p-2 hover:bg-green-300' onClick={()=> Dispatch(nextSlide(slideIndex+1))}>
+      <svg xmlns="http://www.w3.org/2000/svg" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      strokeWidth="1.5"
+       stroke="currentColor"
+        className="w-6 h-6"
+        >
+  <path strokeLinecap="round" 
+  strokeLinejoin="round" 
+  d="m8.25 4.5 7.5 7.5-7.5 7.5" />
 </svg>
 
         </button>
-      <button className='absolute top-[50%] left-4 bg-white rounded-full p-2 hover:bg-green-300' onClick={()=> Dispatch(prevSlide(slideIndex-1))}>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      <button
+       className='absolute top-[50%] left-4 bg-white rounded-full p-2 hover:bg-green-300'
+        onClick={()=> Dispatch(prevSlide(slideIndex-1))}
+        >
+      <svg
+       xmlns="http://www.w3.org/2000/svg"
+        fill="none" 
+        viewBox="0 0 24 24" 
+        strokeWidth="1.5" 
+        stroke="currentColor" 
+        className="w-6 h-6">
+  <path 
+  strokeLinecap="round" 
+  strokeLinejoin="round" 
+  d="M15.75 19.5 8.25 12l7.5-7.5" />
 </svg>
 
       </button>

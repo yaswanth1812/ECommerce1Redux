@@ -16,16 +16,16 @@ import {
   sortByPrice,
   filterByColor,
   filterBySize
-} from "../../features/slices/productSlice"
+} from "../../features/slices/productsSlice"
 
 
-const FilterProducts = () => {
-    const products = useSelector((state)=> state.products.FilterProducts);
+const FilteredProducts = () => {
+    const products = useSelector((state)=> state.products.filteredProducts);
     const error = useSelector((state)=> state.products.error)
     const {type} = useParams();
     const genderButtons =["male","female"];
     const colorButtons =[
-      "red",
+    "red",
     "green",
     "purple",
     "yellow",
@@ -34,7 +34,7 @@ const FilterProducts = () => {
     "black",
     "white",
     "brown",
-  ]
+  ];
   const sizeButtons =['S','M','L','XL'];
   const dispatch = useDispatch();
 
@@ -60,7 +60,7 @@ const FilterProducts = () => {
                                     {item}
                           </Button>
                           </div>
-                        )
+                        );
                       })};
                       <Button 
                        color='gray' 
@@ -84,16 +84,20 @@ const FilterProducts = () => {
       </MenuHandler>
       <MenuList>
        {colorButtons.map((item,index)=>{
-        return <MenuItem style={{color:item}} key={index} onClick={()=> dispatch(filterByColor(item))}>
+        return (
+        <MenuItem style={{color:item}}
+         key={index} 
+        onClick={()=> dispatch(filterByColor(item))}>
           {item}
           </MenuItem>
+       );
        })}
       </MenuList>
     </Menu>
     <Menu>
       <MenuHandler>
         <Button
-        disabled ={type === 'Bags'}
+        disabled ={type === 'Bags' || type === "shoes"}
          color='gray' 
          size="lg"
           variant="outlined"
@@ -104,9 +108,13 @@ const FilterProducts = () => {
       </MenuHandler>
       <MenuList>
        {sizeButtons.map((item,index)=>{
-        return <MenuItem  key={index} onClick={()=> dispatch(filterBySize(item))}>
+        return (
+        <MenuItem 
+         key={index}
+          onClick={()=> dispatch(filterBySize(item))}>
           {item}
           </MenuItem>
+       );
        })}
       </MenuList>
     </Menu>
@@ -119,17 +127,19 @@ const FilterProducts = () => {
                     ripple ={true}
                     className='text-black hover:bg-gray-300 duration-300 ease-in-out mr-4'
                     onClick={()=> dispatch(filterProducts(type))}
-                    >Clear Filter</Button>
+                    >
+                      Clear Filter
+                    </Button>
                   </div>
-
-                </div>
+            </div>
         </div>
-        {error ? <Error></Error>
-         :<div className='grid grid-cols-4 justify-items-center py-8 gap-12'>
+        {error ? ( <Error></Error> )
+         :(<div className='grid grid-cols-4 justify-items-center py-8 gap-12'>
 {products
 .filter((product)=>product.type === type)
-.map((product,index) => (
-<div key={index}>
+.map((product,index) => {
+  return(
+<div key={index} className=''>
 <ProductCard
 id={product.id} 
 name={product.name}
@@ -141,15 +151,15 @@ colors={product.color}
 
   </ProductCard>
         </div>
-))
-}
+);
+})}
 
-        </div>} 
+        </div>)} 
    
 
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FilterProducts;
+export default FilteredProducts;

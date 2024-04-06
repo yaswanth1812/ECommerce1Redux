@@ -25,8 +25,8 @@ const LogIn = () => {
     };
     const dispatch = useDispatch();
   return (
-    <div>
-      <Card className="grid grid-cols-1 items-center justify-items-center h-screen">
+    <div className="grid grid-cols-1 items-center justify-items-center h-screen">
+      <Card className="w-96">
       <CardHeader
         variant="gradient"
         color="gray"
@@ -51,19 +51,20 @@ const LogIn = () => {
           value={values.password}
          onChange={onChange}
          />
-        <Input label="Image URL Adress" 
+        <Input label="Image URL Address" 
         size="lg" 
         type="text"
          name="image" 
          value={values.image}
          onChange={onChange}
          />
-        <div className="-ml-2.5">
-          <Checkbox label="Remember Me" />
-        </div>
+         <div className='-ml-2.5'></div>
       </CardBody>
       <CardFooter className="pt-0">
-        <Button variant="gradient" fullWidth onClick={()=> dispatch(login(values))}> 
+        <Button 
+        variant="gradient" 
+        fullWidth
+         onClick={()=> dispatch(login(values))}> 
           Sign In
         </Button>
         <Typography variant="small" className="mt-6 flex justify-center">

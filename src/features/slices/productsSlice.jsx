@@ -4,7 +4,7 @@ import { storeData } from "../../assests/data/dummyData";
 export const productSlice = createSlice({
     name: "products",
     initialState:{
-    FilterProducts:
+    filteredProducts:
      JSON.parse(sessionStorage.getItem("FilterData")) || storeData,
      SingleProduct:
       JSON.parse(sessionStorage.getItem("oneProduct")) || storeData,
@@ -15,19 +15,20 @@ export const productSlice = createSlice({
             try{
 const filter = storeData.filter(
     (product)=> product.type === action.payload);
- state.FilterProducts = filter;
+ state.filteredProducts = filter;
  state.error = false;
  const saveState =JSON.stringify(filter);
- sessionStorage.setItem("FilterData", saveState)
+ sessionStorage.setItem("FilteredData", saveState)
             }
             catch (err){
-                console.error("Error filtering products:",err)
+            return err;
             }
         },
-        setSingleProduct(state,action) {
+        SingleProduct(state,action) {
             try{
-                const oneProduct =storeData.filter(
-                    (product)=> product.id === action.payload);
+                const oneProduct =state.filteredProducts.filter(
+                    (product)=> product.id === action.payload
+                );
                     state.SingleProduct = oneProduct;
                     const saveState =JSON.stringify(oneProduct);
                     sessionStorage.setItem("oneProduct",saveState)
@@ -39,45 +40,45 @@ const filter = storeData.filter(
         },  
         filterGender(state, action){
             try{
-                const gender = state.FilterProducts.filter(
+                const gender = state.filteredProducts.filter(
                     (product)=>product.gender === action.payload
                 );
                 state.error = false;
-                state.FilterProducts = gender;
+                state.filteredProducts = gender;
                 const oneGenderType = gender.length >0;
                 if(oneGenderType){
                     state.error = false;
                     const saveState = JSON.stringify(gender);
-                    sessionStorage.setItem("filterData",saveState);
+                    sessionStorage.setItem("FilteredData",saveState);
                 }
                 else{
                     state.error = true;
-                    state.FilterProducts =[];
+                    state.filteredProducts =[];
                 }
 
             } catch (err){
                 return err;
             }
         },
-        sortByPrice(state, action){
+        sortByPrice(state){
             try{
-                 const price = state.FilterProducts.sort((a,b)=>
+                 const price = state.filteredProducts.sort((a,b)=>
                     a.price > b.price ? -1 : 1
                  );
-                 state.FilterProducts = price;
+                 state.filteredProducts = price;
                  let count = price.length;
                  if(count > 1){
                     const noError = false;
                     state.error = noError;
                     if(!noError){
-                        state.FilterProducts = price;
+                        state.filteredProducts = price;
                         const saveState = JSON.stringify(price);
-                        sessionStorage.setItem("filterData",saveState);
+                        sessionStorage.setItem("FilteredData",saveState);
                     }
                  }
                  else{
                     state.error =true;
-                    state.FilterProducts =[];
+                    state.filteredProducts =[];
                  }
             }catch(err){
                     return err;
@@ -85,16 +86,16 @@ const filter = storeData.filter(
         },
         filterByColor(state, action){
             try{
-                const color =state.FilterProducts.filter((product) => 
+                const color =state.filteredProducts.filter((product) => 
                 product.color.includes(action.payload)
             );
             state.error =false;
-            state.FilterProducts = color;
+            state.filteredProducts = color;
             if(color.length <=0){
                 state.error = true;
-                state.FilterProducts = color;
+                state.filteredProducts = color;
                 const saveState = JSON.stringify(color);
-                sessionStorage.setItem("filterData",saveState)
+                sessionStorage.setItem("FilteredData",saveState)
 
             }
             }catch(err){
@@ -103,18 +104,18 @@ const filter = storeData.filter(
         },
         filterBySize(state, action){
             try{
-                const size = state.FilterProducts.filter((product)=> product.size.includes(action.payload));
+                const size = state.filteredProducts.filter((product)=> product.size.includes(action.payload));
                 state.error = false;
-                state.FilterProducts = size;
+                state.filteredProducts = size;
                 if(size.length <= 0){
                     state.error = true;
-                    state.FilterProducts =[];
+                    state.filteredProducts =[];
                 }
                 else{
                     state.error = false;
-                    state.FilterProducts = size;
+                    state.filteredProducts = size;
                     const saveState = JSON.stringify(size);
-                    sessionStorage.setItem("filterData",saveState)
+                    sessionStorage.setItem("FilteredData",saveState)
                 }
             }catch(err){
                 return err
@@ -124,7 +125,7 @@ const filter = storeData.filter(
 })
 
 export const {
-    setSingleProduct,
+    SingleProduct,
     filterProducts,
     filterGender, 
     sortByPrice,
