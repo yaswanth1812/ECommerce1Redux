@@ -61,7 +61,7 @@ const FilteredProducts = () => {
                           </Button>
                           </div>
                         );
-                      })};
+                      })}
                       <Button 
                        color='gray' 
                        size="lg"

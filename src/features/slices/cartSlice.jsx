@@ -54,7 +54,7 @@ const cartSlice = createSlice({
                     product.size === productId.size &&
                     product.color === productId.color
                 );
-                if (exist.amount === -1) {
+                if (exist.amount === 1) {
                     state.cart = state.cart.filter((product) =>
                         product.id !== productId.id || 
                         product.size !== productId.size ||
