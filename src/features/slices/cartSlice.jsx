@@ -19,7 +19,7 @@ const cartSlice = createSlice({
                         product.id === productId &&
                         product.size === productId.size &&
                         product.color === productId.color
-                        );
+                );
                 if (exist) {
                     exist.amount++;
                     exist.totalPrice += productId.price;
@@ -45,34 +45,56 @@ const cartSlice = createSlice({
                 return err;
             }
         },
+        // removeFromCart(state, action) {
+        //     const productId = action.payload;
+        //     console.log(action.payload, "payload cart", productId)
+        //     try {
+        //         // const exist = state.cart.findIndex(
+        //         //     (product) =>
+        //         //         product.id === productId &&
+        //         //         product.size === productId.size &&
+        //         //         product.color === productId.color
+        //         // );
+        //         let exist = state.cart
+        //         exist = state.cart.filter((cartitem) => cartitem.id !== productId.id)
+
+        //         { { console.log(exist, "exist") } }
+        //         if (exist.amount === 1) {
+        //             state.cart = state.cart.filter((product) =>
+        //                 product.id !== productId.id ||
+        //                 product.size !== productId.size ||
+        //                 product.color !== productId.color
+
+        //             );
+        //             state.totalAmount--;
+        //             state.totalPrice -= productId.price;
+        //         }
+        //         else {
+        //             exist.amount--;
+        //             exist.totalPrice -= productId.price;
+        //             state.totalAmount--;
+        //             state.totalPrice -= productId.price;
+
+        //         }
+        //     }
+        //     catch (err) {
+        //         return err;
+        //     }
+        // }
         removeFromCart(state, action) {
             const productId = action.payload;
             try {
-                const exist = state.cart.findIndex(
-                    (product) =>
-                    product.id === productId &&
-                    product.size === productId.size &&
-                    product.color === productId.color
+                // Filter out the product to remove
+                state.cart = state.cart.filter((product) =>
+                    product.id !== productId.id ||
+                    product.size !== productId.size ||
+                    product.color !== productId.color
                 );
-                if (exist.amount === 1) {
-                    state.cart = state.cart.filter((product) =>
-                        product.id !== productId.id || 
-                        product.size !== productId.size ||
-                        product.color !== productId.color
-
-                    );
-                    state.totalAmount--;
-                    state.totalPrice -= productId.price;
-                }
-                else {
-                    exist.amount--;
-                    exist.totalPrice -= productId.price;
-                    state.totalAmount--;
-                    state.totalPrice -= productId.price;
-
-                }
-            }
-            catch (err) {
+        
+                // Update total amount and total price
+                state.totalAmount--;
+                state.totalPrice -= productId.price;
+            } catch (err) {
                 return err;
             }
         }

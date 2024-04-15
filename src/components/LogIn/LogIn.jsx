@@ -6,7 +6,6 @@ import {
     CardFooter,
     Typography,
     Input,
-    Checkbox,
     Button,
   } from "@material-tailwind/react";
   import {login} from '../../features/slices/authSlice';
@@ -25,7 +24,7 @@ const LogIn = () => {
     };
     const dispatch = useDispatch();
   return (
-    <div className="grid grid-cols-1 items-center justify-items-center h-screen">
+    <div className="grid grid-cols-1 items-center justify-items-center h-screen" style={{backgroundImage:'url(https://wallpaperbat.com/img/759579-cybersecurity-wallpaper.png)'}}>
       <Card className="w-96">
       <CardHeader
         variant="gradient"

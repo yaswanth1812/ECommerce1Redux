@@ -83,6 +83,7 @@ const Cart = ({ openModal, setOpen }) => {
                         >
                           <Button
                             onClick={() => dispatch(removeFromCart(item))}
+                           
                             size="sm"
                             color="red"
                             ripple={true}
@@ -91,6 +92,8 @@ const Cart = ({ openModal, setOpen }) => {
                             Remove
                           </Button>
                         </Tooltip>
+                        {console.log(item,"item")}
+
                       </div>
                     </div>
                   </div>

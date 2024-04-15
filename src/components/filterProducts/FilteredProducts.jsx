@@ -21,6 +21,7 @@ import {
 
 const FilteredProducts = () => {
     const products = useSelector((state)=> state.products.filteredProducts);
+    console.log(products)
     const error = useSelector((state)=> state.products.error)
     const {type} = useParams();
     const genderButtons =["male","female"];
@@ -44,6 +45,7 @@ const FilteredProducts = () => {
         <div className='pl-14'>
             <h1 className='text-4xl font-inter text-gray-600 font-bold tracking-normal leading-none'>
                 {type}
+                {console.log(type,"type")}
                 </h1>
                 <div className='flex items-center justify-between py-8'>
                   <div className='flex items-center'>
@@ -127,7 +129,7 @@ const FilteredProducts = () => {
                     ripple ={true}
                     className='text-black hover:bg-gray-300 duration-300 ease-in-out mr-4'
                     onClick={()=> dispatch(filterProducts(type))}
-                    >
+                    >                      {console.log(type)}
                       Clear Filter
                     </Button>
                   </div>
