@@ -16,20 +16,20 @@ const SingleProduct = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       {product
         .filter((product) => product.id === id)
         .map((item, index) => {
           return (
-            <div key={index} className="flex justify-center items-center py-10">
+            <div key={index} className="flex flex-col md:flex-row justify-center items-center py-10">
               <div className="pl-44 grow-[2]">
                 <img
-                  className="h-[850px] rounded-lg"
+                  className="h-[400px] rounded-lg"
                   src={item.img}
                   alt={item.name}
                 ></img>
               </div>
-              <div className="grow-[3]">
+              <div className="w-full md:w-3/5 px-4 md:px-8">
                 <div className="max-w-lg">
                   <h5 className="text-2xl font-inter font-bold tracking-normal leading-none pb-4">
                     {item.name}

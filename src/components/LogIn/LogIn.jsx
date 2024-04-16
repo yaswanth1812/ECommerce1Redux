@@ -42,8 +42,8 @@ const LogIn = () => {
         dispatch(login(values));
       }
   return (
-    <div className="grid grid-cols-1 items-center justify-items-center h-screen" style={{backgroundImage:'url(https://wallpaperbat.com/img/759579-cybersecurity-wallpaper.png)'}}>
-      <Card className="w-96">
+    <div className="flex items-center justify-center h-screen bg-cover" style={{backgroundImage:'url(https://wallpaperbat.com/img/759579-cybersecurity-wallpaper.png)'}}>
+      <Card className="w-full md:w-96">
       <CardHeader
         variant="gradient"
         color="gray"
@@ -75,7 +75,6 @@ const LogIn = () => {
          value={values.image}
          onChange={onChange}
          />
-         <div className='-ml-2.5'></div>
       </CardBody>
       <CardFooter className="pt-0">
         <Button 

@@ -30,8 +30,8 @@ const ProductSectionItem = ({
     const defaultSize = size[0];
     const defaultColor = color[0];
   return (
-    <div>
-      <Card className=" w-96 relative">
+    <div className='flex justify-center'>
+      <Card className=" w-full md:w-90 relative">
         <Typography 
         variant='h4'
         className='mb-2 absolute -rotate-45 top-12 right-8 z-10 text-red-700'>

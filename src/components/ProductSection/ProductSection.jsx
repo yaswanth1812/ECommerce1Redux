@@ -4,8 +4,8 @@ import ProductSectionItem from './ProductsectionItem'
 
 const ProductSection = () => {
   return (
-    <div >
-<div className='bg-black p-2 w-[50%] mx-auto rounded-md'>
+    <div className='px-4 md:px-0' >
+<div className='bg-black p-2 w-full md:w-[50%] mx-auto rounded-md mb-8 md:mb-0'>
     <h2 className="text-red-600 text-center text-lg font-inter font-bold tracking-normal leading-none">
       Summer Sale 30%
       </h2>

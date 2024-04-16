@@ -15,9 +15,9 @@ const ProductCard = ({id,name,text,img,price,colors}) => {
   const {type} = useParams();
   return (
     <Link to={`/filteredProducts/${type}/${id}`}>
-       <Card className="mt-6 w-96" onClick={() => dispatch(SingleProduct(id))}>
-      <CardHeader color="blue-gray" className="relative h-96">
-        <img src={img} alt="img-blur" className='h-full w-full'/>
+       <Card className="mt-6 sm:w-full md:w-80 lg:w-96" onClick={() => dispatch(SingleProduct(id))}>
+      <CardHeader color="blue-gray" className="relative h-64 sm:h-72 md:h-80 lg:h-96">
+        <img src={img} alt="img-blur" className='object-cover w-full h-full'/>
       </CardHeader>
       <CardBody className='text-center'>
         <Typography variant="h5" className="mb-2">

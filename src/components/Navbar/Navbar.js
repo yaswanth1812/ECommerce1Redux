@@ -28,11 +28,11 @@ const Navbar = ()=> {
               </p>
             </div>
 
-            <div className='flex justify-around items-center'>
+            <div className='flex flex-col md:flex-row justify-center md:justify-between items-center'>
 <div>
-    <img className='h-16 w-full' src={logo} alt="store"></img>
+    <img className='h-16 md:h-20 w-full' src={logo} alt="store"></img>
 </div>
-<div className='flex flex-row items-center'>
+<div className='flex flex-row items-center md:space-x-4'>
   <div className='flex flex-row items-center'>
 <svg
  xmlns="http://www.w3.org/2000/svg" 
@@ -99,11 +99,11 @@ onClick={handleOpen}>
 </div>
 </div>
 </div>
- <div className='bg-black p-4 w-full flex justify-around'>
-                <p className='text-white font-inter text-base font-medium tracking-normal leading-none text-center'>
+ <div className='bg-black p-4 w-full flex flex-col md:flex-row justify-center md:justify-between'>
+                <p className='text-white font-inter text-base font-medium tracking-normal leading-none text-center md:mr-4 md-2 md:mb-0'>
                 50% OFF
                 </p>
-                <p className='text-white font-inter text-base font-medium tracking-normal leading-none text-center'>
+                <p className='text-white font-inter text-base font-medium tracking-normal leading-none text-center md:mr-4 md-2 md:mb-0'>
                 Free shipping and returns
                 </p>
                 <p className='text-white font-inter text-base font-medium tracking-normal leading-none text-center'>

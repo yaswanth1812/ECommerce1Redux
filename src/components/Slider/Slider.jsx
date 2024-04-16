@@ -22,18 +22,18 @@ const Slider=()=>{
           }>
             <div>
               {parseInt(item.id)=== slideIndex && (
-              <img className="h-[525px] w-full" src={item.img} alt="shoes"></img>
+              <img className="w-full md:h-[525px]" src={item.img} alt="shoes"></img>
               )}
             </div>
-            <div className='absolute top-44 mx-auto inset-x-1/4'>
-              <p className="text-white text-4xl font-inter font-bold tracking-normal leading-none">
+            <div className='absolute inset-0 flex items-center justify-center'>
+              <p className="text-white text-4xl font-inter font-bold tracking-normal leading-none text-center">
               {parseInt(item.id)=== slideIndex && item.text}</p>
               </div>
           </div>
           );
         })}
       </div>
-      <div className='flex absolute bottom-12 lefty-[45%]'>
+      <div className='flex absolute bottom-4 left-1/2 transform -translate-x-1/2'>
 {sliderData.map((dot,index)=>{
   return(
     <div className='mr-4'  key={index} > 
@@ -50,7 +50,7 @@ const Slider=()=>{
   )
 })}
       </div>
-      <div>
+      <div className='absolute inset-0 flex items-center'>
       <button 
       className='absolute top-[50%] right-4 bg-white rounded-full p-2 hover:bg-green-300' onClick={()=> Dispatch(nextSlide(slideIndex+1))}>
       <svg xmlns="http://www.w3.org/2000/svg" 
